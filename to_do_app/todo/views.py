@@ -55,3 +55,13 @@ def user_logout(request):
     logout(request)
     return redirect('login')
 
+@login_required
+def todo_list(request):
+    todos = Todo.objects.filter(user=request.user)
+    return render(
+        request,
+        'todo_list.html',
+        {
+            'todos' : todos
+        }
+    )
