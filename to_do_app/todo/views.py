@@ -49,3 +49,9 @@ def user_login(request):
             'form':form
         }
     )
+    
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
